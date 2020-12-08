@@ -3,6 +3,7 @@
 // Secret secretNumber generator
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
+let highscore = 0;
 
 // Brings in value of user guess after clicking check button
 document.querySelector('.check').addEventListener('click', function () {
@@ -12,7 +13,7 @@ document.querySelector('.check').addEventListener('click', function () {
   if (!guess) {
     document.querySelector('.message').textContent = 'Please enter a number!';
 
-    // When the user gets the number correct
+    // When the user wins
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = 'That is correct!';
 
@@ -21,6 +22,12 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.number').style.width = '30rem';
 
     document.querySelector('.number').textContent = secretNumber;
+
+    // Keeps track of high score
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector('.highscore').textContent = highscore;
+    }
 
     // When the number guessed is too high
   } else if (guess > secretNumber) {
