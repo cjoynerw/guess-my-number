@@ -29,22 +29,11 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.highscore').textContent = highscore;
     }
 
-    // When the number guessed is too high
-  } else if (guess > secretNumber) {
+    // When user is wrong or out of guesses
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector('.message').textContent = 'Too high!';
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
       document.querySelector('.message').textContent =
-        'You lost, reset and try again!';
-      document.querySelector('.score').textContent = 0;
-    }
-
-    // When the number guessed is too low
-  } else if (guess < secretNumber) {
-    if (score > 1) {
-      document.querySelector('.message').textContent = 'Too low!';
+        guess > secretNumber ? 'Too high!' : 'Too low!';
       score--;
       document.querySelector('.score').textContent = score;
     } else {
